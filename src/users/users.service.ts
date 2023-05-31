@@ -17,6 +17,10 @@ export class UsersService {
   ): Promise<UsersDocument> {
     const users = this.usersModel.findByIdAndUpdate(id, createUserDto);
 
+    if (!users) {
+      throw new Error('User not found');
+    }
+
     return users;
   }
 
