@@ -7,10 +7,10 @@ export type UsersDocument = Users & Document;
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 })
 export class Users {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, type: String })
   email: string;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, type: String })
   username: string;
 
   @Prop()
