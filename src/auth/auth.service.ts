@@ -6,11 +6,13 @@ import { Users, UsersDocument } from '../users/schemas/users.schema';
 import { LoginDto } from './dto/login.dto';
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(Users.name) private readonly usersModel: Model<UsersDocument>,
+    private readonly jwtService: JwtService,
   ) {}
 
   async register(registerDto: RegisterDto) {
@@ -73,18 +75,11 @@ export class AuthService {
       };
     }
 
-    // Create token
-    const token = jwt.sign(
-      {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: '1h',
-      },
-    );
+    const token = this.jwtService.sign({
+      id: user._id,
+      username: user.username,
+      email: user.email,
+    });
 
     return {
       message: 'User has been logged in successfully',

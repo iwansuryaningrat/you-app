@@ -10,25 +10,33 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { GetUserAuthInfoRequest } from '../auth-middleware/auth-interface.interface';
 
 @Controller('api')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('createProfile')
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  create(
+    @Request() req: GetUserAuthInfoRequest,
+    @Body() createUserDto: CreateUserDto,
+  ) {
+    const id = req.userId;
+    return this.usersService.create(id, createUserDto);
   }
 
   @Get('getProfile')
-  findOne(@Request() Request) {
-    const id = Request.id;
+  findOne(@Request() req: GetUserAuthInfoRequest) {
+    const id = req.userId;
     return this.usersService.findOne(id);
   }
 
   @Put('updateProfile')
-  update(@Request() Request, @Body() updateUserDto: UpdateUserDto) {
-    const id = Request.id;
+  update(
+    @Request() req: GetUserAuthInfoRequest,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    const id = req.userId;
     return this.usersService.update(id, updateUserDto);
   }
 }

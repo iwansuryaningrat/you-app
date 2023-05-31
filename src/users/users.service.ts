@@ -11,10 +11,13 @@ export class UsersService {
     @InjectModel(Users.name) private readonly usersModel: Model<UsersDocument>,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<UsersDocument> {
-    const users = new this.usersModel(createUserDto);
+  async create(
+    id: string,
+    createUserDto: CreateUserDto,
+  ): Promise<UsersDocument> {
+    const users = this.usersModel.findByIdAndUpdate(id, createUserDto);
 
-    return users.save();
+    return users;
   }
 
   findOne(id: string) {
