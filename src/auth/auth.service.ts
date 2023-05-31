@@ -37,7 +37,6 @@ export class AuthService {
     const user = new this.usersModel(registerDto);
 
     const result = user.save();
-    console.log(result);
 
     return {
       message: 'User has been created successfully',
@@ -83,7 +82,7 @@ export class AuthService {
 
     return {
       message: 'User has been logged in successfully',
-      token,
+      access_token: token,
     };
   }
 }
