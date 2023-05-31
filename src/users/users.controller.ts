@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Request,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Request } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -17,26 +9,75 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post('createProfile')
-  create(
+  async create(
     @Request() req: GetUserAuthInfoRequest,
     @Body() createUserDto: CreateUserDto,
   ) {
     const id = req.userId;
-    return this.usersService.create(id, createUserDto);
+
+    const user = await this.usersService.create(id, createUserDto);
+
+    const data = {
+      email: user.email,
+      username: user.username,
+      name: user.name,
+      birthday: user.birthday,
+      horoscope: user.horoscope,
+      height: user.height,
+      weight: user.weight,
+      interests: user.interests,
+    };
+
+    return {
+      message: 'Profile has been created successfully',
+      data,
+    };
   }
 
   @Get('getProfile')
-  findOne(@Request() req: GetUserAuthInfoRequest) {
+  async findOne(@Request() req: GetUserAuthInfoRequest) {
     const id = req.userId;
-    return this.usersService.findOne(id);
+    const user = await this.usersService.findOne(id);
+
+    const data = {
+      email: user.email,
+      username: user.username,
+      name: user.name,
+      birthday: user.birthday,
+      horoscope: user.horoscope,
+      height: user.height,
+      weight: user.weight,
+      interests: user.interests,
+    };
+
+    return {
+      message: 'Profile has been found successfully',
+      data,
+    };
   }
 
   @Put('updateProfile')
-  update(
+  async update(
     @Request() req: GetUserAuthInfoRequest,
     @Body() updateUserDto: UpdateUserDto,
   ) {
     const id = req.userId;
-    return this.usersService.update(id, updateUserDto);
+    const user = await this.usersService.update(id, updateUserDto);
+
+    const data = {
+      email: user.email,
+      username: user.username,
+      name: user.name,
+      birthday: user.birthday,
+      horoscope: user.horoscope,
+      height: user.height,
+      weight: user.weight,
+      interests: user.interests,
+    };
+
+    return {
+      message: 'Profile has been updated successfully',
+      data,
+    };
   }
 }
