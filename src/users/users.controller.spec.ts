@@ -34,22 +34,24 @@ describe('UsersController', () => {
   });
 
   const createProfile = {
-    name: `test`,
+    name: 'test',
     birthday: '12-12-2000',
-    horoscope: 'Capricorn',
     height: 180,
     weight: 80,
     interests: ['test1', 'test2'],
   };
 
+  const horoscope = 'Sagittarius';
+  const zodiac = 'Dragon';
+
   const userData = {
-    email: 'test1685525046183@mail.com',
-    username: 'test1685525046183',
+    email: 'test1685524668950@mail.com',
+    username: 'test1685524668950',
   };
 
   const headers: any = {
     'x-access-token':
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzcxMjM2MjFiMTQ0OTQyMTMyNTE0YyIsInVzZXJuYW1lIjoidGVzdDE2ODU1MjUwNDYxODMiLCJlbWFpbCI6InRlc3QxNjg1NTI1MDQ2MTgzQG1haWwuY29tIiwiaWF0IjoxNjg1NTQxMTYzLCJleHAiOjE2ODU1NDQ3NjN9.Vhf7YpGxNLSAwYty0O6MTDX89mmqpaBJKLiEFnSs7q0',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzcxMGJkMDBkYThkMjQ5Mjk5ODFiNSIsInVzZXJuYW1lIjoidGVzdDE2ODU1MjQ2Njg5NTAiLCJlbWFpbCI6InRlc3QxNjg1NTI0NjY4OTUwQG1haWwuY29tIiwiaWF0IjoxNjg1NjMxNDQ2LCJleHAiOjE2ODU2MzUwNDZ9.wH9raLWa17kUI59kmvYGLtBZn68az9hZVzSNgd23eQg',
     Accept: 'application/json',
   };
 
@@ -66,7 +68,8 @@ describe('UsersController', () => {
         expect(res.body.data.email).toBe(userData.email);
         expect(res.body.data.name).toBe(createProfile.name);
         expect(res.body.data.birthday).toBe(createProfile.birthday);
-        expect(res.body.data.horoscope).toBe(createProfile.horoscope);
+        expect(res.body.data.horoscope).toBe(horoscope);
+        expect(res.body.data.zodiac).toBe(zodiac);
         expect(res.body.data.height).toBe(createProfile.height);
         expect(res.body.data.weight).toBe(createProfile.weight);
         expect(res.body.data.interests).toStrictEqual(createProfile.interests);
@@ -85,7 +88,8 @@ describe('UsersController', () => {
         expect(res.body.data.email).toBe(userData.email);
         expect(res.body.data.name).toBe(createProfile.name);
         expect(res.body.data.birthday).toBe(createProfile.birthday);
-        expect(res.body.data.horoscope).toBe(createProfile.horoscope);
+        expect(res.body.data.horoscope).toBe(horoscope);
+        expect(res.body.data.zodiac).toBe(zodiac);
         expect(res.body.data.height).toBe(createProfile.height);
         expect(res.body.data.weight).toBe(createProfile.weight);
         expect(res.body.data.interests).toStrictEqual(createProfile.interests);
@@ -105,7 +109,8 @@ describe('UsersController', () => {
         expect(res.body.data.email).toBe(userData.email);
         expect(res.body.data.name).toBe(createProfile.name);
         expect(res.body.data.birthday).toBe(createProfile.birthday);
-        expect(res.body.data.horoscope).toBe(createProfile.horoscope);
+        expect(res.body.data.horoscope).toBe(horoscope);
+        expect(res.body.data.zodiac).toBe(zodiac);
         expect(res.body.data.height).toBe(createProfile.height);
         expect(res.body.data.weight).toBe(createProfile.weight);
         expect(res.body.data.interests).toStrictEqual(createProfile.interests);

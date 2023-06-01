@@ -31,8 +31,9 @@ describe('UsersService', () => {
 
   const createProfile = {
     name: 'test',
-    birthday: '12-12-2000',
-    horoscope: 'Capricorn',
+    birthday: '2000-12-14',
+    horoscope: null,
+    zodiac: null,
     height: 180,
     weight: 80,
     interests: ['test1', 'test2'],
@@ -48,7 +49,6 @@ describe('UsersService', () => {
     expect(result.username).toBe(userData.username);
     expect(result.name).toBe(createProfile.name);
     expect(result.birthday).toBe(createProfile.birthday);
-    expect(result.horoscope).toBe(createProfile.horoscope);
     expect(result.height).toBe(createProfile.height);
     expect(result.weight).toBe(createProfile.weight);
     expect(result.interests).toStrictEqual(createProfile.interests);
@@ -81,5 +81,17 @@ describe('UsersService', () => {
     expect(result.height).toBe(createProfile.height);
     expect(result.weight).toBe(createProfile.weight);
     expect(result.interests).toStrictEqual(createProfile.interests);
+  });
+
+  it('Get horoscope', () => {
+    const result = service.getHoroscope(createProfile.birthday);
+
+    expect(result).toBe('Sagittarius');
+  });
+
+  it('Get zodiac', () => {
+    const result = service.getZodiac(createProfile.birthday);
+
+    expect(result).toBe('Dragon');
   });
 });

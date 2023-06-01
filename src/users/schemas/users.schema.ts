@@ -26,6 +26,9 @@ export class Users {
   horoscope: string;
 
   @Prop()
+  zodiac: string;
+
+  @Prop()
   height: number;
 
   @Prop()
