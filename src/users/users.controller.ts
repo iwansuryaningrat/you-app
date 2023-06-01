@@ -3,11 +3,19 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { GetUserAuthInfoRequest } from '../auth-middleware/auth-interface.interface';
+import { ApiOperation, ApiResponse, ApiTags, ApiHeader } from '@nestjs/swagger';
 
+@ApiHeader({
+  name: 'x-access-token',
+  description: 'Access token',
+})
+@ApiTags('users')
 @Controller('api')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @ApiOperation({ summary: 'Create profile' })
+  @ApiResponse({ status: 201, description: 'Profile has been created' })
   @Post('createProfile')
   async create(
     @Request() req: GetUserAuthInfoRequest,
@@ -35,6 +43,8 @@ export class UsersController {
     };
   }
 
+  @ApiOperation({ summary: 'Get profile' })
+  @ApiResponse({ status: 200, description: 'Profile has been found' })
   @Get('getProfile')
   async findOne(@Request() req: GetUserAuthInfoRequest) {
     const id = req.userId;
@@ -58,6 +68,8 @@ export class UsersController {
     };
   }
 
+  @ApiOperation({ summary: 'Update profile' })
+  @ApiResponse({ status: 200, description: 'Profile has been updated' })
   @Put('updateProfile')
   async update(
     @Request() req: GetUserAuthInfoRequest,
