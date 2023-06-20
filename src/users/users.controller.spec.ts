@@ -45,13 +45,13 @@ describe('UsersController', () => {
   const zodiac = 'Dragon';
 
   const userData = {
-    email: 'test1685524668950@mail.com',
-    username: 'test1685524668950',
+    email: 'iwansuryaningrat@gmail.com',
+    username: 'sningrat2811',
   };
 
   const headers: any = {
     'x-access-token':
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzcxMGJkMDBkYThkMjQ5Mjk5ODFiNSIsInVzZXJuYW1lIjoidGVzdDE2ODU1MjQ2Njg5NTAiLCJlbWFpbCI6InRlc3QxNjg1NTI0NjY4OTUwQG1haWwuY29tIiwiaWF0IjoxNjg1NjMxNDQ2LCJleHAiOjE2ODU2MzUwNDZ9.wH9raLWa17kUI59kmvYGLtBZn68az9hZVzSNgd23eQg',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzlkYWZlZWEzZmMyZGJiOTljMTVkNCIsInVzZXJuYW1lIjoic25pbmdyYXQyODExIiwiZW1haWwiOiJpd2Fuc3VyeWFuaW5ncmF0QGdtYWlsLmNvbSIsImlhdCI6MTY4NTcwNzU1NCwiZXhwIjoxNjg1NzExMTU0fQ.E02jC2QWiZ9J6vRXKDxLQH4T-LHkrHxE3qBQ6leT_XY',
     Accept: 'application/json',
   };
 
