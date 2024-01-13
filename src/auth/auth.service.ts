@@ -13,7 +13,7 @@ export class AuthService {
   constructor(
     @InjectModel(Users.name) private readonly usersModel: Model<UsersDocument>,
     private readonly jwtService: JwtService,
-  ) {}
+  ) { }
 
   async register(registerDto: RegisterDto) {
     const userCheckUsername = await this.usersModel.findOne({
